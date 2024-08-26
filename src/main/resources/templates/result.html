@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<nav>
+    <div class="navbar">
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/crackstation">Crackstation emulator</a></li>
+            <li><a href="/logout">Logout</a><li>
+        </ul>
+    </div>
+</nav>
+<body>
+<div class="input-area">
+    <form class="form-area">
+        <h1>Results</h1>
+        <label for="MD5">MD5:</label>
+        <input type="text" id="MD5" name="MD5" class="input-box">
+        <label for="SHA256">SHA256:</label>
+        <input type="text" id="SHA256" name="SHA256" class="input-box">
+        <a href="/" class="button">Try Again!</a>
+    </form>
+</div>
+</body>
+</html>

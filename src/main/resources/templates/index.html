@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PasswordCracker</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<nav>
+    <div class="navbar">
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/crackstation">Crackstation emulator</a></li>
+            <li><a href="/logout">Logout</a><li>
+        </ul>
+    </div>
+</nav>
+<body>
+<div class="input-area">
+    <form class="form-area" method="post" th:action="@{/result}">
+        <h1>Enter a sentence to hash it</h1>
+        <label for="input"></label>
+        <input type="text" id="input" name="input" class="input-box" placeholder="Write something!" required="required">
+        <button type="submit">Send</button>
+    </form>
+</div>
+</body>
+</html>
