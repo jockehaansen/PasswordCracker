@@ -37,6 +37,7 @@ public class HashCommandLineRunner implements CommandLineRunner {
                 writer.write(currentLine + "\n");
                 sampleSize--; //safety exit satt av sample size på lösenorden
             }
+            logger.log(Level.INFO, "Passwords have been hashed successfully");
         } catch (IOException e) {
             logger.log(Level.SEVERE, "An IOException has occurred: ", e);
         }
