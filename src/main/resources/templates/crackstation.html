@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<nav>
+    <div class="navbar">
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/crackstation">Crackstation emulator</a></li>
+            <li><a href="/logout">Logout</a><li>
+        </ul>
+    </div>
+</nav>
+<body>
+
+    <div class="input-area">
+        <form class="form-area" method="post" th:action="@{/crackstation/crackpassword}">
+            <h1>Enter a non-salted hash, either MD5 or SHA256.</h1>
+            <label for="input"></label>
+            <input type="text" id="input" name="input" class="input-box" placeholder="Write a hashed word!" required="required">
+            <button type="submit" class="button mt-16">Attempt to crack</button>
+        </form>
+        <div th:if="${result} != null">
+            <label for="result" class="mt-16">Your password</label>
+            <input type="text" id="result" name="result" th:value="${result}" class="input-box">
+        </div>
+
+    </div>
+</body>
+</html>
