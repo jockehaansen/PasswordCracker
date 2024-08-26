@@ -6,9 +6,8 @@ import org.springframework.ui.Model;
 
 @Service
 public class HashService {
-    public Model hashInputs(Model model, String input){
+    public void hashInputs(Model model, String input){
         model.addAttribute("md5", HashUtil.md5(input));
         model.addAttribute("sha256", HashUtil.sha256(input));
-        return model;
     }
 }

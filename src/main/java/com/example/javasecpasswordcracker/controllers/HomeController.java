@@ -20,7 +20,6 @@ public class HomeController {
     @PostMapping("/result")
     public String hashSentence(@RequestParam("input") String input, Model model){
         hashService.hashInputs(model, input);
-        System.out.println("Sent to hash: " + input);
         return "result";
     }
 }

@@ -24,13 +24,9 @@ public class HashUtil {
             BigInteger no = new BigInteger(1, hashBytes);
             String hashText = no.toString(16);
 
-            // Ensure leading zeros are included
             while (hashText.length() < 32) {
                 hashText = "0" + hashText;
             }
-
-            //System.out.println(hashText);
-
             return hashText;
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Hashing algorithm not found: " + algorithm, e);
