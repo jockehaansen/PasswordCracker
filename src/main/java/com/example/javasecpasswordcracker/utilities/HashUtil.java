@@ -29,7 +29,7 @@ public class HashUtil {
                 hashText = "0" + hashText;
             }
 
-            System.out.println(hashText);
+            //System.out.println(hashText);
 
             return hashText;
         } catch (NoSuchAlgorithmException e) {
