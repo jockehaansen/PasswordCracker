@@ -25,10 +25,10 @@
     <form class="form-area">
         <h1>Results</h1>
         <label for="MD5">MD5:</label>
-        <input type="text" id="MD5" name="MD5" class="input-box">
-        <label for="SHA256">SHA256:</label>
-        <input type="text" id="SHA256" name="SHA256" class="input-box">
-        <a href="/" class="button">Try Again!</a>
+        <input type="text" id="MD5" name="MD5" class="input-box mb-8" th:value="${md5}">
+        <label for="SHA256" >SHA256:</label>
+        <input type="text" id="SHA256" name="SHA256" class="input-box" th:value="${sha256}">
+        <a href="/" class="button mt-16">Try Again!</a>
     </form>
 </div>
 </body>
