@@ -22,7 +22,7 @@ public class HashCommandLineRunner implements CommandLineRunner {
             File outputFile = ResourceUtils.getFile("classpath:static/output2.txt");
             readAndWriteHash(inputFile, outputFile);
         } catch (Exception e){
-            logger.warning("Trouble finding files");
+            logger.warning("Error finding files, hashing not possible");
         }
     }
 
@@ -32,7 +32,7 @@ public class HashCommandLineRunner implements CommandLineRunner {
 
             String currentLine;
             while ((currentLine = reader.readLine()) != null || sampleSize < 0) {
-                String appendHash = " | MD5:" + HashUtil.md5(currentLine) + " | SHA256:" + HashUtil.sha256(currentLine);
+                String appendHash = "|" + HashUtil.md5(currentLine) + "|" + HashUtil.sha256(currentLine);
                 currentLine += appendHash;
                 writer.write(currentLine + "\n");
                 sampleSize--; //safety exit satt av sample size på lösenorden
