@@ -8,6 +8,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,8 +25,12 @@ public class HashCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws IOException {
         try {
-            File inputFile = resourceLoader.getResource("classpath:data/passwords.txt").getFile();
-            File outputFile = resourceLoader.getResource("classpath:data/output.txt").getFile();
+            //File inputFile = resourceLoader.getResource("classpath:data/passwords.txt").getFile();
+            //File outputFile = resourceLoader.getResource("classpath:data/output.txt").getFile();
+
+            File inputFile = Paths.get("data", "passwords.txt").toFile();
+            File outputFile = Paths.get("data", "output.txt").toFile();
+
             readAndWriteHash(inputFile, outputFile);
         } catch (Exception e){
             logger.warning("Error managing your files, hashing not possible");
@@ -39,9 +44,11 @@ public class HashCommandLineRunner implements CommandLineRunner {
 
             String currentLine;
             while ((currentLine = reader.readLine()) != null || sampleSize < 0) {
+                System.out.println(currentLine);
                 String appendHash = "|" + HashUtil.md5(currentLine) + "|" + HashUtil.sha256(currentLine);
                 currentLine += appendHash;
                 writer.write(currentLine + "\n");
+                System.out.println("Written: " + currentLine);
                 sampleSize--; //safety exit satt av sample size på lösenorden
             }
             logger.log(Level.INFO, "Passwords have been hashed successfully");
