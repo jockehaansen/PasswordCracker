@@ -19,9 +19,7 @@ public class CrackerController {
 
     @PostMapping("/crackstation/crackpassword")
     public String crackPassword(@RequestParam("input") String input, Model model){
-        System.out.println(input);
         hashService.crackHashAndReturnPassword(model, input);
-        System.out.println(model.getAttribute("result"));
         return "crackstation";
     }
 

@@ -18,8 +18,12 @@ public class HashCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws IOException {
         try {
-            File inputFile = ResourceUtils.getFile("classpath:static/example2.txt");
-            File outputFile = ResourceUtils.getFile("classpath:static/output2.txt");
+            File inputFile = ResourceUtils.getFile("classpath:data/passwords.txt");
+            File outputFile = ResourceUtils.getFile("classpath:data/output.txt");
+
+            logger.info("Input file absolute path: " + inputFile.getAbsolutePath());
+            logger.info("Output file absolute path: " + outputFile.getAbsolutePath());
+
             readAndWriteHash(inputFile, outputFile);
         } catch (Exception e){
             logger.warning("Error finding files, hashing not possible");

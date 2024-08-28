@@ -87,3 +87,28 @@ body{
 .mt-16{
     margin-top: 16px
 }
+
+.m-auto{
+    margin: auto;
+}
+
+.git-link{
+    font-size: 96px;
+    color: black;
+}
+
+.git-link:visited{
+    color: black;
+}
+
+.git-link:hover{
+    color: #181618;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-top: 30vh;
+    text-align: center;
+}

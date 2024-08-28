@@ -9,25 +9,32 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
 @Configuration
-public class SecurityConfig{
+public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/css/**", "/js/**", "/login**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .oauth2Login(oauth2 -> oauth2
-                        .defaultSuccessUrl("/", true)
-                        .failureUrl("/login?error=true")
-                )
-                .formLogin(form -> form
-                        .defaultSuccessUrl("/")
-                        .failureUrl("/login?error=true"))
-                .logout(LogoutConfigurer::permitAll
-                );
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        return http.build();
+            http
+                    .authorizeHttpRequests(authorize -> authorize
+                            .requestMatchers("/css/**", "/js/**", "/login").permitAll()
+                            .anyRequest().authenticated()
+                    )
+                    .oauth2Login(oauth2 -> oauth2
+                            .defaultSuccessUrl("/", true)
+                            .failureUrl("/login?error=true")
+                    )
+                    .formLogin(form -> form
+                            .defaultSuccessUrl("/", true)
+                            .failureUrl("/login?error=true")
+                    )
+                    .logout(logout -> logout
+                            .permitAll()
+                            .logoutUrl("/logout")
+                            .deleteCookies("JSESSIONID")
+                            .logoutSuccessUrl("/login?logout") // Redirect after logout
+                    );
+
+            return http.build();
+        }
     }
-}
+

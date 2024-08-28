@@ -1,26 +1,21 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-
+    <title>Hasher&Cracker | Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e381b12111.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-    <div class="container">
-        <h2 class="text-center mt-5">Login</h2>
-        <form th:action="@{/login}" method="post">
-            <button type="submit" class="btn btn-primary btn-block">Login with GitHub</button>
-        </form>
-        <p class="text-center mt-3">
-            <a th:href="@{/register}">Don't have an account? Register here</a>
-        </p>
+    <div class="container m-auto">
+        <h1>Login with GitHub</h1>
+        <a href="/oauth2/authorization/github" class="git-link"><i class="fa-brands fa-square-github git-link"></i></a>
     </div>
-</div>
 </body>
 </html>

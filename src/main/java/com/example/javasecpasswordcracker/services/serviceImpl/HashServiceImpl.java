@@ -23,7 +23,7 @@ public class HashServiceImpl implements HashService {
     @Override
     public void crackHashAndReturnPassword(Model model, String input) {
         try {
-            File hashFile = ResourceUtils.getFile("classpath:static/output2.txt");
+            File hashFile = ResourceUtils.getFile("classpath:static/output.txt");
 
             try (BufferedReader reader = new BufferedReader(new FileReader(hashFile))) {
                 String currentLine;
