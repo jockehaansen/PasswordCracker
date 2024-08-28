@@ -2,18 +2,22 @@ package com.example.javasecpasswordcracker.services.serviceImpl;
 
 import com.example.javasecpasswordcracker.services.HashService;
 import com.example.javasecpasswordcracker.utilities.HashUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.util.ResourceUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.nio.file.Paths;
 
 @Service
 public class HashServiceImpl implements HashService {
 
-    private int sampleSize = 1000;
+    @Autowired
+    ResourceLoader resourceLoader;
+    private int sampleSize = 10000; //safety exit satt av sample size på lösenorden
 
     public void hashInputs(Model model, String input){
         model.addAttribute("md5", HashUtil.md5(input));
@@ -23,12 +27,10 @@ public class HashServiceImpl implements HashService {
     @Override
     public void crackHashAndReturnPassword(Model model, String input) {
         try {
-            File hashFile = ResourceUtils.getFile("classpath:static/output2.txt");
-
-            try (BufferedReader reader = new BufferedReader(new FileReader(hashFile))) {
+            File outputFile = Paths.get("data", "output.txt").toFile();
+            try (BufferedReader reader = new BufferedReader(new FileReader(outputFile))) {
                 String currentLine;
                 boolean found = false;
-
                 while ((currentLine = reader.readLine()) != null || sampleSize > 0) {
                     String[] parts = currentLine.split("\\|");
 
@@ -43,7 +45,7 @@ public class HashServiceImpl implements HashService {
                             break;
                         }
                     }
-                    sampleSize--;
+                    sampleSize--; //safety exit satt av sample size på lösenorden
                 }
                 if (!found) {
                     model.addAttribute("result", "No matching password found for the given hash.");

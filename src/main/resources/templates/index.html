@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>PasswordCracker</title>
-    <link rel="stylesheet" href="/style.css">
+    <title>Hasher&Cracker | Hasher</title>
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -13,7 +13,11 @@
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="/crackstation">Crackstation emulator</a></li>
-            <li><a href="/logout">Logout</a><li>
+            <li><a href="#" onclick="document.getElementById('logoutForm').submit();">Logout</a>
+                <form id="logoutForm" action="/perform_logout" method="POST" style="display: none;">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                </form>
+            <li>
         </ul>
     </div>
 </nav>

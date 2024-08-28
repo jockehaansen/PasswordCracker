@@ -87,3 +87,47 @@ body{
 .mt-16{
     margin-top: 16px
 }
+
+.m-auto{
+    margin: auto;
+}
+
+.git-link{
+    font-size: 96px;
+    color: black;
+}
+
+.git-link:visited{
+    color: black;
+}
+
+.git-link:hover{
+    color: #181618;
+}
+
+.logout-link{
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: black;
+    border: #181618 2px solid;
+    border-radius: 5px;
+    padding: 4px;
+}
+
+.logout-link:visited{
+    color: black;
+}
+
+.logout-link:hover{
+    color: #181618;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-top: 30vh;
+    text-align: center;
+}
