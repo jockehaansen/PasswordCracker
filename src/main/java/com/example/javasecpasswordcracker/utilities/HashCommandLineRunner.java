@@ -1,9 +1,11 @@
 package com.example.javasecpasswordcracker.utilities;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
 
 import java.io.*;
 import java.util.logging.Level;
@@ -13,20 +15,21 @@ import java.util.logging.Logger;
 @Profile("HashRunner")
 public class HashCommandLineRunner implements CommandLineRunner {
 
+    @Autowired
+    ResourceLoader resourceLoader;
+
     private final Logger logger = Logger.getLogger(HashCommandLineRunner.class.getName());
-    private int sampleSize = 1000; //safety exit satt av sample size på lösenorden
+    private int sampleSize = 10000; //safety exit satt av sample size på lösenorden
+
     @Override
     public void run(String... args) throws IOException {
         try {
-            File inputFile = ResourceUtils.getFile("classpath:data/passwords.txt");
-            File outputFile = ResourceUtils.getFile("classpath:data/output.txt");
-
-            logger.info("Input file absolute path: " + inputFile.getAbsolutePath());
-            logger.info("Output file absolute path: " + outputFile.getAbsolutePath());
-
+            File inputFile = resourceLoader.getResource("classpath:data/passwords.txt").getFile();
+            File outputFile = resourceLoader.getResource("classpath:data/output.txt").getFile();
             readAndWriteHash(inputFile, outputFile);
         } catch (Exception e){
-            logger.warning("Error finding files, hashing not possible");
+            logger.warning("Error managing your files, hashing not possible");
+            e.printStackTrace();
         }
     }
 
